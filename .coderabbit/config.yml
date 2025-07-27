@@ -1,0 +1,10 @@
+language: ko
+review:
+  goals:
+    - 성능 개선
+    - 가독성 향상
+    - kotlin 스타일 가이드 준수
+    - 같은 결과를 내는 여러 방법 제시
+  exclude:
+    - docs/
+    - tests/
