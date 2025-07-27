@@ -1,7 +1,7 @@
 package baekjoon.barkingdog.basicCode
 
 fun main(){
-    print("""\    /\
+    println("""\    /\
  )  ( ')
 (  /  )
  \(__)|""")
