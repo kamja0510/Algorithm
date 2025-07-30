@@ -1,0 +1,4 @@
+package performanceTest
+
+fun main() {}
+
