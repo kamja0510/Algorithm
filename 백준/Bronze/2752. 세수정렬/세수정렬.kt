@@ -1,10 +1,22 @@
+import java.util.*
+
 fun main() {
-    val threeNumbers = readln().split(" ").map { it.toInt() }
-    val sortedThreeNumbers = threeNumbers.sorted()
-    val result = buildString {
-        append("${sortedThreeNumbers[0]} ")
-        append("${sortedThreeNumbers[1]} ")
-        append("${sortedThreeNumbers[2]}")
+    System.`in`.bufferedReader().use{ br ->
+        System.`out`.bufferedWriter().use { bw ->
+            val st = StringTokenizer(br.readLine())
+            val a = st.nextToken().toInt()
+            val b = st.nextToken().toInt()
+            val c = st.nextToken().toInt()
+
+            if (a > b) {
+                if (c > a) bw.write("$b $a $c")
+                else if (b > c) bw.write("$c $b $a")
+                else bw.write("$b $c $a")
+            } else {
+                if (c < a) bw.write("$c $a $b")
+                else if (b < c) bw.write("$a $b $c")
+                else bw.write("$a $c $b")
+            }
+        }
     }
-    println(result)
 }
