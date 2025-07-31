@@ -1,3 +1,5 @@
+package baekjoon.barkingdog.basicCode
+
 import java.util.*
 
 fun main(){
