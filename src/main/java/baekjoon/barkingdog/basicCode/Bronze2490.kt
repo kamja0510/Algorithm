@@ -13,14 +13,7 @@ fun main(){
                     if(stomach == "0") count++
                 }
                 appendLine(
-                    when(count){
-                        0 -> "E"
-                        1 -> "A"
-                        2 -> "B"
-                        3 -> "C"
-                        4 -> "D"
-                        else -> ""
-                    }
+                    charArrayOf('E','A','B','C','D')[count]
                 )
             }
         }
