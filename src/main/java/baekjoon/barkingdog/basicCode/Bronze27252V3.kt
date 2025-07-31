@@ -2,8 +2,6 @@ package baekjoon.barkingdog.basicCode
 
 import java.util.*
 
-val output = StringBuilder()
-
 fun main() {
     val input = StringTokenizer(readln())
 
@@ -16,9 +14,11 @@ fun main() {
     pq.add(nun2)
     pq.add(nun3)
 
-    output.append(pq.poll()).append(" ")
-    output.append(pq.poll()).append(" ")
-    output.append(pq.poll())
+    val result = buildString {
+        append(pq.poll()).append(" ")
+        append(pq.poll()).append(" ")
+        append(pq.poll())
+    }
 
-    println(output.toString())
+    println(result)
 }
