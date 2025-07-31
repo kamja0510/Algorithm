@@ -10,11 +10,14 @@ fun main(){
     val a = st.nextToken().toInt()
     val b = st.nextToken().toInt()
 
-    bw.write("${a+b}\n")
-    bw.write("${a-b}\n")
-    bw.write("${a*b}\n")
-    bw.write("${a/b}\n")
-    bw.write("${a%b}\n")
+    val result = buildString {
+        appendLine(a+b)
+        appendLine(a-b)
+        appendLine(a*b)
+        appendLine(a/b)
+        appendLine(a%b)
+    }
+    bw.write(result)
     bw.flush()
     bw.close()
 }
