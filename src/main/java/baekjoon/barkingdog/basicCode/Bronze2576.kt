@@ -17,3 +17,5 @@ fun main() {
         println(oddMin)
     }
 }
+
+// 12332KB, 76MS
