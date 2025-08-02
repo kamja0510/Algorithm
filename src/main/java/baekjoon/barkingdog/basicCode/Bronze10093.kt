@@ -10,6 +10,13 @@ fun main() {
     if(a == b) println(0)
     else{
         println((b-a).absoluteValue-1)
-        println((min(a,b)+1..<max(a,b)).joinToString(" "))
+        print(
+            buildString {
+                (min(a,b)+1..<max(a,b)).forEach {
+                    append(it).append(" ")
+                }
+            }
+        )
     }
 }
+// 26644kb 212ms(1등)
