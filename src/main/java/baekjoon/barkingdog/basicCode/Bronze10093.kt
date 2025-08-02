@@ -12,11 +12,11 @@ fun main() {
         println((b-a).absoluteValue-1)
         print(
             buildString {
-                (min(a,b)+1..<max(a,b)).forEach {
-                    append(it).append(" ")
+                for(i in (min(a,b)+1..<max(a,b))) {
+                    append(i).append(" ")
                 }
             }
         )
     }
 }
-// 26644kb 212ms(1등)
+// 25796kb 192ms(1등)
