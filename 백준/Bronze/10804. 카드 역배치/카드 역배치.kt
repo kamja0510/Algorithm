@@ -6,14 +6,14 @@ fun main(){
     val numbers = IntArray(21){ index -> index }
     for(i in 0..9){
         val st = StringTokenizer(readln())
-        var start = st.nextToken().toInt()
-        var end = st.nextToken().toInt()
-        while(start < end){
-            val temp = numbers[start]
-            numbers[start] = numbers[end]
-            numbers[end] = temp
-            start++
-            end--
+        val start = st.nextToken().toInt()
+        val end = st.nextToken().toInt()
+        val tempStack = Stack<Int>()
+        for(j in start .. end){
+            tempStack.add(numbers[j])    
+        }
+        for(j in start .. end){
+            numbers[j] = tempStack.pop()
         }
     }
 
