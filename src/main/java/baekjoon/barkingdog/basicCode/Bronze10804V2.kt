@@ -10,7 +10,7 @@ fun main(){
         val end = st.nextToken().toInt()
         val tempStack = Stack<Int>()
         for(j in start .. end){
-            tempStack.add(numbers[j])
+            tempStack.push(numbers[j])
         }
         for(j in start .. end){
             numbers[j] = tempStack.pop()
@@ -24,4 +24,4 @@ fun main(){
     }
     bw.close()
 }
-// 12844KB 88ms
+// 12824KB 92ms

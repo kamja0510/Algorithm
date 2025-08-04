@@ -9,9 +9,7 @@ fun main(){
         var start = st.nextToken().toInt()
         var end = st.nextToken().toInt()
         while(start < end){
-            val temp = numbers[start]
-            numbers[start] = numbers[end]
-            numbers[end] = temp
+            numbers[start] = numbers[end].also { numbers[end] = numbers[start] }
             start++
             end--
         }
@@ -24,4 +22,4 @@ fun main(){
     }
     bw.close()
 }
-//12836KB 96ms
+//12800KB 84ms
