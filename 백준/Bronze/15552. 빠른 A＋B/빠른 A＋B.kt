@@ -1,16 +1,12 @@
 package baekjoon.barkingdog.basicCode
 
-import java.util.StringTokenizer
+val t = java.io.StreamTokenizer(System.`in`.bufferedReader())
+val i get() = t.nextToken().run{t.nval.toInt()}
 
-fun main() {
-    System.`in`.bufferedReader().use { br ->
-        System.`out`.bufferedWriter().use { bw ->
-            val t = br.readLine().toInt()
-            repeat(t) {
-                val st = StringTokenizer(br.readLine())
-                bw.write("${st.nextToken().toInt()+st.nextToken().toInt()}\n")
-            }
-            bw.flush()
-        }
+fun main()=with(System.`out`.bufferedWriter()){
+    repeat(i){
+        write("${i + i}\n")
     }
+    flush()
+    close()
 }
