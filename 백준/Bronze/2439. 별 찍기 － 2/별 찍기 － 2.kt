@@ -1,17 +1,13 @@
-import java.util.*
+fun main() {
+    val n = readln().toInt()
 
-fun main(args : Array<String>){
-    val num = readln().toInt()
-    var count = 1
-    repeat(num){
-        val sb = StringBuffer()
-        repeat(num-count){
-            sb.append(" ")
+    val result = buildString {
+        for (i in 1..n) {
+            repeat(n - i) { append(' ') }
+            repeat(i) { append('*') }
+            append('\n')
         }
-        repeat(count){
-            sb.append("*")
-        }
-        println("${sb}")
-        count++
     }
+
+    print(result)
 }
