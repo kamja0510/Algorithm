@@ -4,7 +4,7 @@ import java.util.*
 
 fun main() {
     System.`in`.bufferedReader().use { br ->
-        val t = readln().toInt()
+        val t = br.readLine().toInt()
         val result = buildString {
             repeat(t) {
                 val charArray = ShortArray(26)
@@ -12,13 +12,13 @@ fun main() {
                 val oldString = st.nextToken()
                 val newString = st.nextToken()
                 oldString.forEach {
-                    charArray[it.code-'a'.code]++
+                    charArray[it -'a']++
                 }
                 newString.forEach {
-                    charArray[it.code-'a'.code]--
+                    charArray[it-'a']--
                 }
-                val filteredSize = charArray.filterNot { it.toInt() == 0 }.size
-                if(filteredSize == 0) append("Possible") else append("Impossible")
+                val isPossible = charArray.none { it != 0.toShort() }
+                if(isPossible) append("Possible") else append("Impossible")
                 appendLine()
             }
         }
