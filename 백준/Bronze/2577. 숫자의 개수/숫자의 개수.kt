@@ -6,17 +6,18 @@ fun main(){
     repeat(3){
         multipleNumber *= readln().toInt()
     }
-    
-    multipleNumber.toString().forEach{
-        numbers[it.code - '0'.code]++
+
+    while(multipleNumber != 0){
+        numbers[multipleNumber%10]++
+        multipleNumber /= 10
     }
-    
+
     val result = buildString {
         numbers.forEach {
             append(it)
             appendLine()
         }
     }
-    
+
     print(result)
 }
