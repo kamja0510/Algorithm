@@ -7,10 +7,14 @@ fun main(){
     roomNumber.toString().forEach {
         numbers[it.digitToInt()]++
     }
-    val maxCount = numbers.filterIndexed { index, value ->
-        index != 6 && index != 9
-    }.maxOrNull()
+    // 6과 9를 제외한 숫자들의 최대 개수
+    var maxCount = 0
+    for (i in 0..9) {
+        if (i != 6 && i != 9) {
+            maxCount = maxOf(maxCount, numbers[i])
+        }
+    }
+    
     val sixOrNine = (numbers[6]+numbers[9]+1)/2
-    val result = if( maxCount!! > sixOrNine) maxCount else sixOrNine
-    print(result)
+    print(maxOf(maxCount, sixOrNine))
 }
