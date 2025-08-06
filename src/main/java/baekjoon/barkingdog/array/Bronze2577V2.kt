@@ -1,15 +1,15 @@
 package baekjoon.barkingdog.array
 
 fun main(){
-    var multipleNumber = 1
+    var product = 1
     val numbers = IntArray(10)
     repeat(3){
-        multipleNumber *= readln().toInt()
+        product *= readln().toInt()
     }
 
-    while(multipleNumber != 0){
-        numbers[multipleNumber%10]++
-        multipleNumber /= 10
+    while(product != 0){
+        numbers[product%10]++
+        product /= 10
     }
 
     val result = buildString {

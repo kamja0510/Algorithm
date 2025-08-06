@@ -1,14 +1,14 @@
 package baekjoon.barkingdog.array
 
 fun main(){
-    var multipleNumber = 1
+    var product = 1
     val numbers = IntArray(10)
     repeat(3){
-        multipleNumber *= readln().toInt()
+        product *= readln().toInt()
     }
 
-    multipleNumber.toString().forEach{
-        numbers[it.code - '0'.code]++
+    product.toString().forEach{
+        numbers[it.digitToInt()]++
     }
 
     val result = buildString {
@@ -20,4 +20,4 @@ fun main(){
 
     print(result)
 }
-// 12372KB 72ms
+// 12752KB 84ms
