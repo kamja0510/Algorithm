@@ -5,38 +5,46 @@ import java.util.StringTokenizer
 
 fun main(){
     System.`in`.bufferedReader().use{ br ->
-        val linkedList = LinkedList<Char>()
-        br.readLine().forEach { linkedList.add(it) }
-        val iterator = linkedList.listIterator(linkedList.size)
+        System.`out`.bufferedWriter().use { bw ->
+            val linkedList = LinkedList<Char>()
+            val iterator = linkedList.listIterator()
+            while (true) {
+                val alphabet = br.read().toChar()
+                if (alphabet == '\n') break
+                iterator.add(alphabet)
+            }
 
-        val m = br.readLine().toInt()
+            val m = br.readLine().toInt()
 
-        repeat(m){
-            val st = StringTokenizer(br.readLine())
-            val command = st.nextToken()
+            repeat(m) {
+                val command = br.readLine()
 
-            when(command) {
-                "L" -> {
-                    if(iterator.hasPrevious()) iterator.previous()
-                }
-                "D" -> {
-                    if(iterator.hasNext()) iterator.next()
-                }
-                "B" -> {
-                    if(iterator.hasPrevious()){
-                        iterator.previous()
-                        iterator.remove()
+                when (command[0]) {
+                    'L' -> {
+                        if (iterator.hasPrevious()) iterator.previous()
+                    }
+
+                    'D' -> {
+                        if (iterator.hasNext()) iterator.next()
+                    }
+
+                    'B' -> {
+                        if (iterator.hasPrevious()) {
+                            iterator.previous()
+                            iterator.remove()
+                        }
+                    }
+
+                    'P' -> {
+                        val alphabet = command[2]
+                        iterator.add(alphabet)
                     }
                 }
-                "P" -> {
-                    val alphabet = st.nextToken()
-                    iterator.add(alphabet[0])
-                }
             }
+            val result = buildString {
+                linkedList.forEach { append(it) }
+            }
+            bw.write(result)
         }
-        val result = buildString {
-            linkedList.forEach { append(it) }
-        }
-        println(result)
     }
 }
