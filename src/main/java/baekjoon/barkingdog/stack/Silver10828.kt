@@ -1,11 +1,9 @@
 package baekjoon.barkingdog.stack
 
-import java.util.*
-
 fun main() {
     val numberOfCommands = readln().toInt()
 
-    val stack = Stack<Int>()
+    val stack = ArrayDeque<Int>()
 
     buildString {
         repeat(numberOfCommands){
@@ -13,10 +11,10 @@ fun main() {
 
             when(command[0]){
                 "push" ->{
-                    stack.push(command[1].toInt())
+                    stack.addLast(command[1].toInt())
                 }
                 "pop" -> {
-                    if(stack.isEmpty()) appendLine(-1) else appendLine(stack.pop())
+                    if(stack.isEmpty()) appendLine(-1) else appendLine(stack.removeLast())
                 }
                 "size" -> {
                     appendLine(stack.size)
@@ -25,7 +23,7 @@ fun main() {
                     if(stack.isEmpty()) appendLine(1) else appendLine(0)
                 }
                 "top" -> {
-                    if(stack.isEmpty()) appendLine(-1) else appendLine(stack.peek())
+                    if(stack.isEmpty()) appendLine(-1) else appendLine(stack.last())
                 }
             }
         }
