@@ -34,12 +34,13 @@ fun main(){
                 }
 
                 'P' -> {
-                    val alphabet = command[2]
-                    iterator.add(alphabet)
+                    command.getOrNull(2)?.let {
+                        iterator.add(it)
+                    }
                 }
             }
         }
-        val result = buildString {
+        val result = buildString(linkedList.size) {
             linkedList.forEach { append(it) }
         }
         println(result)

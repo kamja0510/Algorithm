@@ -12,11 +12,11 @@ fun main() = System.`in`.bufferedReader().use { br ->
             'L' -> if (left.isNotEmpty()) right.addFirst(left.removeLast())
             'D' -> if (right.isNotEmpty()) left.addLast(right.removeFirst())
             'B' -> if (left.isNotEmpty()) left.removeLast()
-            'P' -> left.addLast(cmd[2])
+            'P' -> cmd.getOrNull(2)?.let { left.addLast(it) }
         }
     }
 
-    val result = buildString {
+    val result = buildString(left.size + right.size) {
         left.forEach { append(it) }
         right.forEach { append(it) }
     }
