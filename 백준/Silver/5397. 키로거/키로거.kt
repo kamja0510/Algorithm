@@ -1,34 +1,41 @@
 package baekjoon.barkingdog.linkedList
 
+import java.util.*
+
 fun main() {
-    repeat(readln().toInt()){
-        val password = readln()
-        
-        val left = ArrayDeque<Char>()
-        val right = ArrayDeque<Char>()
-        
-        password.forEach{ char ->
-            when(char){
-                '-' -> {
-                    if(left.isNotEmpty()) left.removeLast()
+    System.`in`.bufferedReader().use { br ->
+        System.`out`.bufferedWriter().use { bw ->
+            repeat(br.readLine().toInt()){
+                val command = br.readLine()
+
+                val password = LinkedList<Char>()
+                val iterator = password.listIterator()
+                command.forEach { char ->
+                    when(char){
+                        '-' -> {
+                            if (iterator.hasPrevious()){
+                                iterator.previous()
+                                iterator.remove()
+                            }
+                        }
+                        '<' -> {
+                            if(iterator.hasPrevious()) iterator.previous()
+                        }
+                        '>' -> {
+                            if(iterator.hasNext()) iterator.next()
+                        }
+                        else -> {
+                            iterator.add(char)
+                        }
+                    }
                 }
-                '<' -> {
-                    if(left.isNotEmpty()) right.addFirst(left.removeLast())
+
+                val result = buildString(password.size) {
+                    password.forEach { append(it) }
                 }
-                '>' -> {
-                    if(right.isNotEmpty())left.addLast(right.removeFirst())
-                }
-                else -> {
-                    left.addLast(char)
-                }
+                bw.write(result)
+                bw.newLine()
             }
         }
-        
-        val result = buildString{
-            left.forEach{append(it)}
-            right.forEach{append(it)}
-        }
-        
-        println(result)
     }
 }
