@@ -3,12 +3,12 @@ package baekjoon.barkingdog.linkedList
 fun main() {
     val (n,k) = readln().split(' ').map(String::toInt)
     val circularLinkedList = CircularLinkedList<Int>()
-    (1..n).forEach{ circularLinkedList.add(it)}
+    repeat(n) { circularLinkedList.add(it + 1) }
     buildString {
         append('<')
-        while(circularLinkedList.getSize() > 0){
+        repeat(n) { i ->
             append(circularLinkedList.removeNext(k))
-            if(circularLinkedList.getSize() != 0)append(", ")
+            if (i != n - 1) append(", ")
         }
         append('>')
     }.run(::println)
