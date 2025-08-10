@@ -30,11 +30,11 @@ fun main() {
                     }
                 }
 
-                password.forEach { char ->
-                    bw.write(char.toString())
+                val result = buildString(password.size) {
+                    password.forEach { append(it) }
                 }
-                bw.write("\n")
-                bw.flush()
+                bw.write(result)
+                bw.newLine()
             }
         }
     }
