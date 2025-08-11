@@ -19,4 +19,4 @@ fun main(){
     println(answer)
 }
 
-data class Building(val height: Int, val count: Int)
+private data class Building(val height: Int, val count: Int)
