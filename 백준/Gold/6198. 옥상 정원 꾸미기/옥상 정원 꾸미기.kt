@@ -1,22 +1,17 @@
 package baekjoon.barkingdog.stack
 
-fun main(){
-    val numberOfBuildings = readln().toInt()
+fun main() {
+    val br = System.`in`.bufferedReader()
+    val n = br.readLine().toInt()
 
-    val stack = ArrayDeque<Building>()
-    val heights = IntArray(numberOfBuildings){ readln().toInt() }
-    var answer: Long = 0
+    val stack = ArrayDeque<Int>()
+    var answer = 0L
 
-    for(i in numberOfBuildings-1 downTo 0){
-        var count = 0
-        while(stack.isNotEmpty() && stack.last().height < heights[i]){
-            count += stack.last().count + 1
-            stack.removeLast()
-        }
-        stack.addLast(Building(height = heights[i], count = count))
-        answer += count
+    repeat(n) {
+        val h = br.readLine().toInt()
+        while (stack.isNotEmpty() && stack.last() <= h) stack.removeLast()
+        answer += stack.size
+        stack.addLast(h)
     }
-    println(answer)
+    print(answer)
 }
-
-data class Building(val height: Int, val count: Int)
