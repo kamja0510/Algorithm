@@ -1,9 +1,10 @@
+@file:Suppress("unused")
 package baekjoon.barkingdog.deque
 
 import kotlin.math.absoluteValue
 
 fun main(){
-    var (sizeOfQueue, numberOfExtracting) = readln().split(" ").map{ it.toInt() }
+    var (sizeOfQueue, _) = readln().split(" ").map{ it.toInt() }
     val orderOfExtracting = readln().split(" ").map{ it.toInt() }
     var answer = 0
     var offset = 0
