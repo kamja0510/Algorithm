@@ -6,18 +6,13 @@ fun main(){
     repeat(numberOfCase){
         val string = readln()
         val stack = ArrayDeque<Char>()
-        string.forEach{
-            when(it){
-                'A', 'B' -> {
-                    if(stack.lastOrNull() == it){
+        for (char in string) {
+                if (stack.isNotEmpty() && stack.last() == char) {
                         stack.removeLast()
-                    }else{
-                        stack.addLast(it)
+                    } else {
+                        stack.addLast(char)
                     }
-                }
-                else -> {}
             }
-        }
         if(stack.isEmpty()) answer++
     }
     println(answer)
