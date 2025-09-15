@@ -7,13 +7,11 @@ fun main(){
         var isBalanced = true
         val string = readln()
         if(string == ".") break
-        string.forEach{
-            when(it){
-                '(' -> { stack.addLast('(') }
-                '[' -> { stack.addLast('[') }
-                ')' -> { if(stack.lastOrNull() == '(') stack.removeLast() else { isBalanced = false; return@forEach} }
-                ']' -> { if(stack.lastOrNull() == '[') stack.removeLast() else { isBalanced = false; return@forEach} }
-                else ->{}
+        loop@ for (ch in string) {
+            when (ch) {
+                '(', '[' -> stack.addLast(ch)
+                ')' -> if (stack.lastOrNull() == '(') stack.removeLast() else { isBalanced = false; break@loop }
+                ']' -> if (stack.lastOrNull() == '[') stack.removeLast() else { isBalanced = false; break@loop } 
             }
         }
         if(isBalanced && stack.isEmpty()){
