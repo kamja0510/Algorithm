@@ -7,10 +7,10 @@ fun main(){
         val stack = ArrayDeque<Char>()
         val parentheses = readln()
         var isCorrect = true
-        loop@ for(parenthesis in parentheses){
+        for(parenthesis in parentheses){
             when(parenthesis){
                 '(' -> { stack.addLast('(') }
-                ')' -> { if(stack.lastOrNull() == '(') stack.removeLast() else { isCorrect = false; break@loop}}
+                ')' -> { if(stack.lastOrNull() == '(') stack.removeLast() else { isCorrect = false; break}}
             }
         }
         if(isCorrect && stack.isEmpty()) {
