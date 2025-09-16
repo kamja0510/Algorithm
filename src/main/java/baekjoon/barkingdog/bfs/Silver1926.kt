@@ -8,7 +8,8 @@ fun main() {
     val visit = Array(numberOfRow){
         BooleanArray(numberOfColumn)
     }
-    val directions = listOf(Pair(0,1), Pair(1,0), Pair(-1,0), Pair(0,-1))
+    val rowDirection = intArrayOf(0, 1, -1, 0)  // 우, 하, 상, 좌
+    val columnDirection = intArrayOf(1, 0, 0, -1)
     var numberOfDraw = 0
     var maxExtent = 0
     val queue = ArrayDeque<Pair<Int,Int>>()
@@ -22,11 +23,11 @@ fun main() {
             while(queue.isNotEmpty()){
                 val current = queue.removeFirst()
                 extent++
-                for(direction in directions){
-                    val nextRow = current.first + direction.first
-                    val nextColumn = current.second + direction.second
-                    if(nextRow !in 0..<numberOfRow || nextColumn !in 0..<numberOfColumn) continue
-                    if(paper[nextRow][nextColumn] != 1 || visit[nextRow][nextColumn]) continue
+                repeat(4){
+                    val nextRow = current.first + rowDirection[it]
+                    val nextColumn = current.second + columnDirection[it]
+                    if(nextRow !in 0..<numberOfRow || nextColumn !in 0..<numberOfColumn) return@repeat
+                    if(paper[nextRow][nextColumn] != 1 || visit[nextRow][nextColumn]) return@repeat
                     queue.addLast(Pair(nextRow, nextColumn))
                     visit[nextRow][nextColumn] = true
                 }
