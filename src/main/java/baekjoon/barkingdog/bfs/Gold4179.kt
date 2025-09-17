@@ -43,12 +43,10 @@ fun main(){
             maze[nextRow][nextColumn] = currentObject
         }
     }
-    println(
-        if(isEscapable) answer else "IMPOSSIBLE"
-    )
+    if(isEscapable) println(answer) else println("IMPOSSIBLE")
 }
 
-data class Node(
+private data class Node(
     val row: Int,
     val column: Int,
     val escapeTime: Int
