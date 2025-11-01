@@ -10,7 +10,7 @@ fun solution(board: Array<IntArray>, moves: IntArray): Int {
 
     moves.forEach {
         if(transposedArray[it-1].isNotEmpty()){
-            if(pickedDolls.isNotEmpty() && pickedDolls.peek() == transposedArray[it-1].first ){
+            if(pickedDolls.isNotEmpty() && pickedDolls.peek() == transposedArray[it-1].first() ){
                 transposedArray[it-1].poll()
                 pickedDolls.pop()
                 answer += 2
