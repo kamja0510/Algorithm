@@ -26,3 +26,6 @@ Provide a comparative review. If the user's solution is valid, immediately ackno
 
 ### 4. ⏱️ Complexity Check
 - Briefly state the Time/Space complexity of the user's code to establish a baseline for comparison.
+
+### 5. Language
+- Response language should be korean
