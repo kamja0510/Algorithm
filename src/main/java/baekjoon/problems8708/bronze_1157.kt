@@ -2,10 +2,11 @@ package baekjoon.problems8708
 
 fun main(){
     val input = readln()
-    input.findMostAlphabet()
+    input.findMostAlphabet2()
 }
 
-private fun String.findMostAlphabet(){
+// 268ms
+private fun String.findMostAlphabet1(){
     // 알파벳 개수는 26개
     // a~z 26개짜리 배열 만들어서 각 배열 인덱스에 카운팅
     // 배열 돌면서 max값 찾으면서 만약 현재 max값과 겹치면 중복이라고 표시, 또 새로운 max값이 발견된다면 중복 체크해제 및 max값 최신화
@@ -30,4 +31,12 @@ private fun String.findMostAlphabet(){
     }
 
     if(isAlreadyExist) println("?") else println(('A'+maxIndex))
+}
+
+// 368ms
+private fun String.findMostAlphabet2(){
+    val charCounts = this.uppercase().groupingBy { it }.eachCount()
+    val maxCount = charCounts.values.maxOrNull() ?: 0
+    val mostFrequent = charCounts.filter { it.value == maxCount }
+    if (mostFrequent.size > 1) println("?") else println(mostFrequent.keys.first())
 }
