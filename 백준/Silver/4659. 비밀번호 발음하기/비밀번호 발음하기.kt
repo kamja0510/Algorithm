@@ -6,9 +6,11 @@ private data class ConsecutiveInformation(
 )
 
 private enum class CharType{
-    Consonant,
-    Vowel
+    CONSONANT,
+    VOWEL
 }
+
+private val vowel = setOf('a','e','i','o','u')
 
 fun main(){
     while(true){
@@ -23,29 +25,26 @@ fun main(){
 2. 모음이 3개 혹은 자음이 3개 연속으로 오면 안 된다.
 3. 같은 글자가 연속적으로 두번 오면 안되나, ee 와 oo는 허용한다.
  */
+// 25108KB, 124ms
 private fun validatePassword(
     password: String,
 ): String{
-    var hasVowel = false
-    var hasNotTripleConsecutiveCharType = true
-    var hasNotDoubleConsecutiveAlphabet = true
 
+    var hasVowel = false
     var previousAlphabet = '?'
     var currentConsecutiveInformation = ConsecutiveInformation(
         charType = null,
         consecutiveCount = 0
     )
 
-    password.forEachIndexed{ index, char ->
+    password.forEach{ char ->
         val currentCharType = char.checkCharType()
         if(char == previousAlphabet && char != 'e' && char != 'o'){
-            hasNotDoubleConsecutiveAlphabet = false
-            // 여기에서 그냥 실패
+            return "<$password> is not acceptable."
         }
 
         if(currentConsecutiveInformation.consecutiveCount == 2 && currentConsecutiveInformation.charType == currentCharType){
-            hasNotTripleConsecutiveCharType = false
-            // 여기에서 그냥 실패
+            return "<$password> is not acceptable."
         }else if(currentConsecutiveInformation.charType == currentCharType){
             currentConsecutiveInformation = ConsecutiveInformation(
                 charType = currentCharType,
@@ -58,17 +57,15 @@ private fun validatePassword(
             )
         }
 
-        if(char.checkCharType() == CharType.Vowel) hasVowel = true
+        if(currentCharType == CharType.VOWEL) hasVowel = true
 
         previousAlphabet = char
     }
 
 
-    return if(hasVowel && hasNotDoubleConsecutiveAlphabet && hasNotTripleConsecutiveCharType) "<$password> is acceptable." else "<$password> is not acceptable."
+    return if(hasVowel) "<$password> is acceptable." else "<$password> is not acceptable."
 }
 
 private fun Char.checkCharType(): CharType{
-    val vowel = setOf('a','e','i','o','u')
-
-    return if(vowel.contains(this)) CharType.Vowel else CharType.Consonant
+    return if(vowel.contains(this)) CharType.VOWEL else CharType.CONSONANT
 }
