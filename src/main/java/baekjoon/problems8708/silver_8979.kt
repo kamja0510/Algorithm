@@ -27,6 +27,7 @@ fun main(){
 }
 
 // 정렬을 이용한 순위 생성
+// 23212KB, 156ms
 private fun makeRank1(
     targetCountryId: Int,
     countries: ArrayList<Country>
@@ -46,6 +47,7 @@ private fun makeRank1(
 }
 
 // target 보다 등수높은 갯수 세기
+// 23444KB 188ms
 private fun makeRank2(
     targetCountryId: Int,
     countries: ArrayList<Country>
